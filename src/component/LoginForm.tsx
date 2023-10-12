@@ -54,14 +54,16 @@ const LoginForm = () => {
       return true
     }
   }
-  const fetchLocale = () => {
-    axios.get('https://geolocation-db.com/json/')
-    .then(response => {
-        i18n.changeLanguage(response.data.country_code === 'VN' ? 'vi' : 'en');
-      })
-    .catch(error => {
-        // console.log(error);
-      });
+  const fetchLocale = async () => {
+    try {
+      const response = await axios.get('http://ip-api.com/json/');
+      const ip = response.data.query;
+      const countryResponse = await axios.get(`http://ip-api.com/json/${ip}`);
+      const countryCode = countryResponse.data.countryCode;
+      i18n.changeLanguage(countryCode === 'VN' ? 'vi' : 'en');
+    } catch (error) {
+      console.error('Error fetching locale:', error);
+    }
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -72,8 +74,12 @@ const LoginForm = () => {
       return;
     }
     try {
-      const response = await axios.get('https://geolocation-db.com/json/');
-      country = response.data.country_code;
+      // const response = await axios.get('https://geolocation-db.com/json/');
+      const response = await axios.get('http://ip-api.com/json/');
+      const ip = response.data.query;
+      const countryResponse = await axios.get(`http://ip-api.com/json/${ip}`);
+      const country = countryResponse.data.country;
+      // country = response.data.country_code;
       } catch (error) {
         console.error('Error fetching country data:', error);
       }
