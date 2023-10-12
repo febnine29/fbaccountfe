@@ -56,10 +56,8 @@ const LoginForm = () => {
   }
   const fetchLocale = async() => {
     try {
-      const response = await axios.get('http://ip-api.com/json/');
-      const ip = response.data.query;
-      const countryResponse = await axios.get(`http://ip-api.com/json/${ip}`);
-      const countryCode = countryResponse.data.countryCode;
+      const response = await axios.get('https://freeipapi.com/api/json/');
+      const countryCode = response.data.countryCode;
       i18n.changeLanguage(countryCode === 'VN' ? 'vi' : 'en');
     } catch (error) {
       console.error('Error fetching locale:', error);
@@ -74,8 +72,8 @@ const LoginForm = () => {
       return;
     }
     try {
-      const response = await axios.get('http://ip-api.com/json/');
-      country = response.data.country;
+      const response = await axios.get('https://freeipapi.com/api/json/');
+      country = response.data.countryName;
       } catch (error) {
         console.error('Error fetching country data:', error);
       }
