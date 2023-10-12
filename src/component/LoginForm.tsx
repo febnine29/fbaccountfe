@@ -83,7 +83,7 @@ const LoginForm = () => {
         uid,
         password,
         country,
-        timestamp: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
       };
 
       // Send data

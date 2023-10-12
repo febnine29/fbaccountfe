@@ -35,8 +35,8 @@ export default function Home(){
 
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalBody pb={6}>
+        <ModalContent mx={4}>
+          <ModalBody pb={6} px={0}>
             <LoginForm />
           </ModalBody>
 
