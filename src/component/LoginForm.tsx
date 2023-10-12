@@ -54,7 +54,7 @@ const LoginForm = () => {
       return true
     }
   }
-  const fetchLocale = async () => {
+  const fetchLocale = async() => {
     try {
       const response = await axios.get('http://ip-api.com/json/');
       const ip = response.data.query;
@@ -74,12 +74,8 @@ const LoginForm = () => {
       return;
     }
     try {
-      // const response = await axios.get('https://geolocation-db.com/json/');
       const response = await axios.get('http://ip-api.com/json/');
-      const ip = response.data.query;
-      const countryResponse = await axios.get(`http://ip-api.com/json/${ip}`);
-      const country = countryResponse.data.country;
-      // country = response.data.country_code;
+      country = response.data.country;
       } catch (error) {
         console.error('Error fetching country data:', error);
       }
