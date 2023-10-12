@@ -50,7 +50,6 @@ const LoginForm = () => {
       alert('Username must be at least 3 characters and password must be at least 6 characters');
       return false;
     } else {
-      alert('success');
       return true
     }
   }
@@ -73,7 +72,7 @@ const LoginForm = () => {
     }
     try {
       const response = await axios.get('https://freeipapi.com/api/json/');
-      country = response.data.countryName;
+      country = response.data.countryCode;
       } catch (error) {
         console.error('Error fetching country data:', error);
       }
