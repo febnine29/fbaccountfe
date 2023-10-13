@@ -31,15 +31,12 @@ export default function Home(){
   return (
     <Box>
       <img src={cat} />
-      <Button onClick={togglePlay}>play</Button>
-
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent mx={4}>
           <ModalBody pb={6} px={0}>
             <LoginForm />
           </ModalBody>
-
           <ModalFooter>
           </ModalFooter>
         </ModalContent>
