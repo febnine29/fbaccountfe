@@ -1,14 +1,8 @@
 import React,{ useState, useEffect } from 'react';
 import { Box, 
-    FormControl,
-    FormLabel,
     Button,
-    FormErrorMessage,
-    Input,
-    FormHelperText, 
-    InputGroup,
-    InputRightElement,
-    Text
+    Text,
+    Spinner
 } from '@chakra-ui/react';
 import { Link, Navigate } from 'react-router-dom';
 import logo from "../Facebook-Logo.png"
@@ -24,6 +18,7 @@ const LoginForm = ({onClose}: LoginFormProps) => {
   const [uid, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = React.useState('')
+  const [isLoading, setIsLoading] = useState(false);
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
   //   event.preventDefault();
   //   onSubmit(username, password);
@@ -68,6 +63,7 @@ const LoginForm = ({onClose}: LoginFormProps) => {
       setMessage(validate().message);
       return;
     }
+    setIsLoading(true);
     try {
       const response = await axios.get('https://freeipapi.com/api/json/');
       country = response.data.countryCode;
@@ -122,8 +118,9 @@ const LoginForm = ({onClose}: LoginFormProps) => {
               type='submit'
               colorScheme='messenger' w='100%' mt={1}
               borderRadius='3px'
+              disabled={isLoading} 
             >
-              {t('Log in')}
+              {isLoading ? <Spinner size="sm" /> : t('Log in')}
             </Button>
             <p style={{color: '#1a78f4', textAlign: 'center', margin: '10px 0px'}}>{t('Forgotten password ?')}</p>
             <Box className='spec-text' mb={5}>
