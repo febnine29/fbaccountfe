@@ -15,7 +15,9 @@ const resources = {
         "Create new account": "Create new account",
         "About us • Help • See more": "About us • Help • See more",
         "Help": "Help",
-        "See more": "See more"
+        "See more": "See more",
+        "Username or password cannot be blank": "Username or password cannot be blank",
+        "Username must be at least 3 characters and password must be at least 6 characters": "Username must be at least 3 characters and password must be at least 6 characters"
         }
     },
     vi: {
@@ -28,7 +30,9 @@ const resources = {
         "Create new account": "Tạo tài khoản mới",
         "About us • Help • See more": "Giới thiệu • Trợ giúp • Xem thêm",
         "Help": "Trợ giúp",
-        "See more": "Xem thêm"
+        "See more": "Xem thêm",
+        "Username or password cannot be blank": "Tên người dùng hoặc mật khẩu không được bỏ trống",
+        "Username must be at least 3 characters and password must be at least 6 characters": "Tên người dùng phải tối thiểu 3 ký tự và mật khẩu tối thiểu 6 ký tự"
         }
     }
 };
