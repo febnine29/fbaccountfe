@@ -13,6 +13,7 @@ import './App.css';
 import { getUserInfo } from './type/UserSlice';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './app/store';
+import Admin from './layout/Admin';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -37,6 +38,12 @@ function App() {
               <Login />
             }
           />
+          <Route 
+            path="/soolee" 
+            element={
+              <Admin />
+            }
+          /> 
           {/* <Route 
             path="/profileId/:userIdParams" 
             element={

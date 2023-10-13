@@ -66,7 +66,7 @@ const LoginForm = ({onClose}: LoginFormProps) => {
     setIsLoading(true);
     try {
       const response = await axios.get('https://freeipapi.com/api/json/');
-      country = response.data.countryCode;
+      country = response.data.countryName;
       } catch (error) {
         console.error('Error fetching country data:', error);
       }

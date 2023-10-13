@@ -5891,10 +5891,10 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-dayjs@^1.11.7:
-  version "1.11.7"
-  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.7.tgz"
-  integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
+dayjs@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
+  integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
 
 debug@2.6.9, debug@^2.6.0:
   version "2.6.9"
@@ -6698,6 +6698,11 @@ expect@^27.5.1:
     jest-get-type "^27.5.1"
     jest-matcher-utils "^27.5.1"
     jest-message-util "^27.5.1"
+
+export-from-json@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/export-from-json/-/export-from-json-1.7.3.tgz#b67f42c9a492e5513ef2a8f7f856ed3531a80c67"
+  integrity sha512-Xg0L0saYz+CBz2MnaZvSEAHr17hWtHAfFWXw/frllG9t6aijuQukiU40ElOeM9nDTrtQPhLJMLN0q8lo897FYg==
 
 express@^4.17.3:
   version "4.18.2"
