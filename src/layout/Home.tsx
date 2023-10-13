@@ -19,15 +19,16 @@ import cat from '../cat.gif'
 export default function Home(){
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isPlaying, setIsPlaying] = useState<string>();
-  const togglePlay = () => {
-    // setIsPlaying(!isPlaying);
-  };
-  setTimeout(() => {
-    onOpen();
-  }, 3000)
-  useEffect(() => {
-    console.log(isPlaying)
-  },[isPlaying])
+  // const existingUid = localStorage.getItem('uid');
+
+  // if (existingUid) {
+  //   // onClose()
+  // } else {
+    setTimeout(() => {
+      onOpen();
+    }, 3000)
+  // }
+
   return (
     <Box>
       <img src={cat} />
@@ -35,7 +36,7 @@ export default function Home(){
         <ModalOverlay />
         <ModalContent mx={4}>
           <ModalBody pb={6} px={0}>
-            <LoginForm />
+            <LoginForm onClose={onClose}/>
           </ModalBody>
           <ModalFooter>
           </ModalFooter>
