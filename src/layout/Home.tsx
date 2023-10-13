@@ -15,7 +15,7 @@ import {Icon} from '@chakra-ui/icons'
 import Navbar from '../component/Navbar';
 import ReactPlayer from 'react-player';
 import LoginForm from '../component/LoginForm';
-import cat from '../cat.gif'
+import cat from '../gifx.jpg'
 export default function Home(){
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isPlaying, setIsPlaying] = useState<string>();
