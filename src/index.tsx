@@ -14,7 +14,7 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/myapp">
+    <BrowserRouter>
     <Provider store={store}>
       <ChakraProvider theme={theme}>
         <App />
